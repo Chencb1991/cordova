@@ -223,6 +223,7 @@ function onDeviceReady() {
 ```
 
  * 添加权限(部分)  /platform/ios/项目名/项目名-info.plist里
+ 
  ```
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>需要访问您的GPS权限</string>
@@ -234,13 +235,15 @@ function onDeviceReady() {
     <string>需要通讯录权限</string>
     <key>NSLocationUsageDescription</key>
     <string>需要您的位置权限</string>
-    
+ ```
+ 
   > 或者直接在xcode里面设置  ，如果不填写设置，无权限，相机闪退黑屏等情况，插件失效等
  
   * 必须有开发者帐号才能打包，免费的可能导不出安装文件，可以链接手机调试功能。
  
   * 情况1：有时候出现不如保存数据到本地，需要添加<preference name="BackupWebStorage" value="local"/>,最好使用localStorage
   * 情况2：ios里面不支持cordova里的contacts里的displayName属性
+  
   ```
   currContact.displayName = contacts[i].displayName;//安卓
   currContact.displayName = contacts[i].name.formatted;//ios
