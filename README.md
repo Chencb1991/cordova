@@ -160,6 +160,91 @@ cordova build android --release -- --keystore="dwd.keystore" --alias=dwd --store
 ```
 
  
+ ----------------------------------------------------------------------------
  
+ ## cordova ios
+ 
+ > 在完成苹果开发者和已申请签名证书和描述文件的情况下以及有一台苹果电脑，支持xcode
+ 
+ * 安装cordova (同上)
+ * 添加ios平台
+ * corrdova build ios(可略)
+ * 找到平台下 /platform/ios/xx.xcodeproj 文件直接双击打开xcode
+ * 编写功能插件，安装插件等
+ ```
+ document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    var app3 =[];
+    var contactFileds = [""];
+    //filter制定为空或不指定返回所有联系人列表
+    var options = { filter: "", multiple: true };
+    navigator.contacts.find(contactFileds, onSuccess, onError, options);
+    function onSuccess(contacts) {
+            //创建联系人对象数组
+              var contactsArr = [];
+              for (var i = 0; i < contacts.length; i++) {
+                //创建联系人对象        
+                var currContact = {};
+                //设置联系人名称
+                currContact.displayName = contacts[i].displayName;
+                //设置联系人电话号码
+                var phoneNumbers = [];
+                if(contacts[i].phoneNumbers != null){
+                    for(var j=0;j<contacts[i].phoneNumbers.length;j++){
+                      phoneNumbers.push(contacts[i].phoneNumbers[j].value);
+                    }
+                 }
+                 currContact.phoneNumbers = phoneNumbers;
+                 contactsArr.push(currContact);
+              }
 
+            localStorage.setItem('teljoin',JSON.stringify(contactsArr));
+            
+        }
+    function onError(err) {
+            app3 = JSON.stringify(err);
+        }
+
+
+     //获取经纬度
+     navigator.geolocation.getCurrentPosition(iponSuccess, iponError);
+     function iponSuccess(position){
+         console.log('纬度:'+ position.coords.latitude+'\n'+'经度:'+ position.coords.longitude+'\n');
+         localStorage.setItem('dwdlatitude',position.coords.latitude);
+         localStorage.setItem('longitude',position.coords.longitude);
+     }      
+
+     //定位数据获取失败响应
+     function iponError(error) {
+        console.log(error.message);
+    } 
+  
+}
+```
+
+ * 添加权限(部分)  /platform/ios/项目名/项目名-info.plist里
+ ```
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>需要访问您的GPS权限</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>需要访问您的GPS权限</string>
+    <key>NSCameraUsageDescription</key>
+    <string>需要摄像头权限</string>
+    <key>NSContactsUsageDescription</key>
+    <string>需要通讯录权限</string>
+    <key>NSLocationUsageDescription</key>
+    <string>需要您的位置权限</string>
+    
+  > 或者直接在xcode里面设置  ，如果不填写设置，无权限，相机闪退黑屏等情况，插件失效等
+ 
+  * 必须有开发者帐号才能打包，免费的可能导不出安装文件，可以链接手机调试功能。
+ 
+  * 情况1：有时候出现不如保存数据到本地，需要添加<preference name="BackupWebStorage" value="local"/>,最好使用localStorage
+  * 情况2：ios里面不支持cordova里的contacts里的displayName属性
+  ```
+  currContact.displayName = contacts[i].displayName;//安卓
+  currContact.displayName = contacts[i].name.formatted;//ios
+                ```
+                 
+  
 
