@@ -159,6 +159,38 @@ keytool -genkey -v -keystore dwd.keystore -alias dwd -keyalg RSA -keysize 2048 -
 cordova build android --release -- --keystore="dwd.keystore" --alias=dwd --storePassword=? --password=?
 ```
 
+
+* 内页返回键返回上一页，tab退出问题解决
+
+```
+ watch: {
+      $route: {
+        handler: function(val, oldVal){
+          if(val.name=='mains'||val.name=='loan'||val.name=='user'){
+          document.addEventListener("backbutton", this.onBackKeyDown, false);
+          }else{
+            //移除监听
+          document.removeEventListener('backbutton', this.onBackKeyDown, false);
+          document.removeEventListener("backbutton", this.exitApp, false); // 注销返回键 
+          // document.removeEventListener('backbutton', this.pageBack, false)
+          }
+        },
+        // 深度观察监听
+        deep: true
+      }
+    }
+   ```
+
+
+
+
+
+
+
+
+
+
+
  
  ----------------------------------------------------------------------------
  
