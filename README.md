@@ -163,6 +163,28 @@ cordova build android --release -- --keystore="dwd.keystore" --alias=dwd --store
 * 内页返回键返回上一页，tab退出问题解决
 
 ```
+methods:{
+ onBackKeyDown() {
+      var that = this;
+            window.plugins.toast.showLongCenter('再点击一次退出!');  
+            document.removeEventListener("backbutton", this.onBackKeyDown, false); //注销返回键  
+            document.addEventListener("backbutton", this.exitApp, false);//绑定退出事件
+            //3秒后重新注册  
+            var intervalID = window.setInterval(  
+              this.functions(),
+            3000
+              );  
+            this.exitApp()
+        },
+    functions() {  
+                window.clearInterval(intervalID);  
+                document.removeEventListener("backbutton", this.exitApp, false); // 注销返回键  
+                document.addEventListener("backbutton", this.onBackKeyDown, false); //返回键  
+              }, 
+    exitApp(){
+            navigator.app.exitApp();
+        }
+},
  watch: {
       $route: {
         handler: function(val, oldVal){
