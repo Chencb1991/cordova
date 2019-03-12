@@ -48,6 +48,8 @@ cordova build android
 相机插件：cordova plugin add cordova-plugin-camera
 白名单插件：cordova plugin add cordova-plugin-whitelist
 通讯录插件：cordova plugin add cordova-plugin-contacts
+Cordova InAppBrowser： cordova plugin add cordova-plugin-inappbrowser
+地理位置：CordovaProject>cordova plugin add cordova-plugin-geolocation
 ```
 * 方法使用index.js
 ```
