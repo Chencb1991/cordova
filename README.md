@@ -6,6 +6,9 @@ npm install -g cordova
 * 创建项目
 ```
 StatusBar.overlaysWebView(false);   //不被webView覆盖
+if (cordova.platformId == 'android') {
+    StatusBar.backgroundColorByHexString("#333");
+}
 #cordova create path（文件夹名字）id（应用id名字）name（应用名字）
 exmple：cordova create myproject com.example.myproject testpro
 ```
