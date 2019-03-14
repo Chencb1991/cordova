@@ -17,8 +17,10 @@ if(device.platform==='iOS'){
     StatusBar.backgroundColorByHexString("transparent");
     StatusBar.overlaysWebView(false);   //不被webView覆盖
 }
-> https://blog.csdn.net/u011127019/article/details/56281444
+
 ```
+> https://blog.csdn.net/u011127019/article/details/56281444
+
 * cd 目录
 * 安装平台
 ```
