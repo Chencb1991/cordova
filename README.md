@@ -357,7 +357,7 @@ function onDeviceReady() {
   ```
   currContact.displayName = contacts[i].displayName;//安卓
   currContact.displayName = contacts[i].name.formatted;//ios
-                ```
-                 
+              
+      ```             
   
 
