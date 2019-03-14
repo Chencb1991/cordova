@@ -5,6 +5,7 @@ npm install -g cordova
 ```
 * 创建项目
 ```
+https://blog.csdn.net/u011127019/article/details/56281444
 StatusBar.overlaysWebView(false);   //不被webView覆盖
 if (cordova.platformId == 'android') {
     StatusBar.backgroundColorByHexString("#333");
