@@ -5,13 +5,12 @@ npm install -g cordova
 ```
 * 创建项目
 ```
-
-
-
 #cordova create path（文件夹名字）id（应用id名字）name（应用名字）
 exmple：cordova create myproject com.example.myproject testpro
+```
 
 * 判断平台
+```
 cordova plugin add cordova-plugin-device
 if(device.platform==='iOS'){
     StatusBar.backgroundColorByHexString("transparent");
