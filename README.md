@@ -5,13 +5,19 @@ npm install -g cordova
 ```
 * 创建项目
 ```
-https://blog.csdn.net/u011127019/article/details/56281444
-StatusBar.overlaysWebView(false);   //不被webView覆盖
-if (cordova.platformId == 'android') {
-    StatusBar.backgroundColorByHexString("#333");
-}
+
+
+
 #cordova create path（文件夹名字）id（应用id名字）name（应用名字）
 exmple：cordova create myproject com.example.myproject testpro
+
+* 判断平台
+cordova plugin add cordova-plugin-device
+if(device.platform==='iOS'){
+    StatusBar.backgroundColorByHexString("transparent");
+    StatusBar.overlaysWebView(false);   //不被webView覆盖
+}
+> https://blog.csdn.net/u011127019/article/details/56281444
 ```
 * cd 目录
 * 安装平台
