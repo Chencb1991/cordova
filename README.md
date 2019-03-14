@@ -306,7 +306,7 @@ function onDeviceReady() {
     <string>需要您的位置权限</string>
     
     
-    <!-- 相册 -->   
+    <!-- 相册 --> ios5必须添加，否则会出现闪退  
 <key>NSPhotoLibraryUsageDescription</key>   
 <string>App需要您的同意,才能访问相册</string>   
 <!-- 相机 -->   
