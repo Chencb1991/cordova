@@ -14,7 +14,7 @@ exmple：cordova create myproject com.example.myproject testpro
 cordova plugin add cordova-plugin-device
 if(device.platform==='iOS'){
     StatusBar.backgroundColorByHexString("transparent");
-    StatusBar.overlaysWebView(false);   //不被webView覆盖
+    StatusBar.overlaysWebView(false);   //不被webView覆盖,解决ios5顶部被遮挡问题
 }
 
 ```
