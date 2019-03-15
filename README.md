@@ -62,7 +62,8 @@ cordova build android
 通讯录插件：cordova plugin add cordova-plugin-contacts
 Cordova InAppBrowser： cordova plugin add cordova-plugin-inappbrowser
 地理位置：CordovaProject>cordova plugin add cordova-plugin-geolocation
-cordova plugin add cordova-plugin-x-toast
+弹出框：cordova plugin add cordova-plugin-x-toast
+判断系统：cordova plugin add cordova-plugin-device
 ```
 * 方法使用index.js
 ```
