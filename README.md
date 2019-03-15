@@ -103,7 +103,12 @@ function onDeviceReady() {
             navigator.app.exitApp();
             }
         }
-
+        
+        if(device.platform==='iOS'){
+                StatusBar.backgroundColorByHexString("transparent");
+                StatusBar.overlaysWebView(false);   //不被webView覆盖,解决ios5顶部被遮挡问题
+          }
+            
         var app3 =[];
         var contactFileds = ["phoneNumbers"];
         //filter制定为空或不指定返回所有联系人列表
@@ -116,7 +121,14 @@ function onDeviceReady() {
                 //创建联系人对象        
                 var currContact = {};
                 //设置联系人名称
-                currContact.displayName = contacts[i].displayName;
+                if(device.platform==='iOS'){
+                   currContact.displayName = contacts[i].name.formatted;
+                }
+                if(device.platform==='Android'){
+                   currContact.displayName = contacts[i].displayName;
+                }
+                 //currContact.displayName = contacts[i].displayName;//安卓
+                //currContact.displayName = contacts[i].name.formatted;//ios
                 //设置联系人电话号码
                 var phoneNumbers = [];
                 if(contacts[i].phoneNumbers != null){
@@ -205,6 +217,10 @@ methods:{
         handler: function(val, oldVal){
           if(val.name=='mains'||val.name=='loan'||val.name=='user'){
           document.addEventListener("backbutton", this.onBackKeyDown, false);
+          }else if(val.name=='auther'||val.name=='usercard'){//内页有下级页面
+          document.addEventListener("backbutton",this.gouser, false);  
+          document.removeEventListener('backbutton', this.onBackKeyDown, false);
+          document.removeEventListener("backbutton", this.exitApp, false); // 注销返回键  
           }else{
             //移除监听
           document.removeEventListener('backbutton', this.onBackKeyDown, false);
