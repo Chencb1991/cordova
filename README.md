@@ -311,6 +311,7 @@ function onDeviceReady() {
  * 添加权限(部分)  /platform/ios/项目名/项目名-info.plist里
  
  ```
+    <key>NSAllowsArbitraryLoads</key>//开放http内容
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>需要访问您的GPS权限</string>
     <key>NSLocationAlwaysUsageDescription</key>
