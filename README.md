@@ -57,6 +57,7 @@ cordova build android
  ```
  * 安装cordova插件(部分)
  ```
+ 启动图片：cordova plugin add cordova-plugin-splashscreen
  网络连接：cordova plugin add cordova-plugin-network-information
 相机插件：cordova plugin add cordova-plugin-camera
 白名单插件：cordova plugin add cordova-plugin-whitelist
