@@ -66,6 +66,9 @@ Cordova InAppBrowser： cordova plugin add cordova-plugin-inappbrowser
 地理位置：CordovaProject>cordova plugin add cordova-plugin-geolocation
 弹出框：cordova plugin add cordova-plugin-x-toast
 判断系统：cordova plugin add cordova-plugin-device
+状态栏：cordova plugin add cordova-plugin-statusbar
+> 全局<preference name="StatusBarBackgroundColor" value="#61a9f7" /> value写上状态栏需要填充的颜色
+> 单页设置 StatusBar.backgroundColorByHexString("#ffffff");
 ```
 * 方法使用index.js
 ```
