@@ -382,6 +382,30 @@ function onDeviceReady() {
   currContact.displayName = contacts[i].displayName;//安卓
   currContact.displayName = contacts[i].name.formatted;//ios
               
-      ```             
+      ```        
+      
+  
+  ## android跳转app（插件 inappbrowser）
+  
+  ```
+    if (url.startsWith("taobao://")) {
+                try {
+                Intent intent = new Intent();
+                intent.setAction("android.intent.action.VIEW");
+                Uri uri = Uri.parse(url);
+                intent.setData(uri);
+                cordova.getActivity().startActivity(intent);
+                } catch (Exception e) {
+                e.printStackTrace();
+                }
+                return true;
+            }
+ ```
+ 
+ 
+ 
+ 
+      
+      
   
 
